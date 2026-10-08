@@ -1,0 +1,59 @@
+# Maven
+
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# Kotlin
+
+.kotlin/
+
+# IntelliJ IDEA
+
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Eclipse
+
+.apt_generated/
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache/
+
+# NetBeans
+
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# Gradle and build folders
+
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# Visual Studio Code
+
+.vscode/
+
+# Environment files and secrets
+
+.env
+.env.*
+!.env.example
+
+# Log files
+
+*.log
+
+# macOS
+
+.DS_Store
