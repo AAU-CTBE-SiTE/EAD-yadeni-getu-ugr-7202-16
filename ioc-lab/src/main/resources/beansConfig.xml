@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Basic bean / setter injection of literal values (PDF pp. 6-10) -->
+    <bean id="literalStudent" class="com.craft.Student">
+        <property name="id" value="101"/><property name="name" value="John Doe"/><property name="age" value="20"/>
+        <property name="city" value="Addis"/><property name="country" value="Ethiopia"/>
+    </bean>
+
+    <!-- Address object dependency (PDF pp. 16-19) -->
+    <bean id="address" class="com.craft.Address">
+        <property name="city" value="Addis Ababa"/><property name="country" value="Ethiopia"/>
+    </bean>
+    <bean id="objectSetterStudent" class="com.craft.Student">
+        <property name="id" value="102"/><property name="name" value="Jane Doe"/><property name="age" value="21"/>
+        <property name="address" ref="address"/>
+    </bean>
+
+    <!-- Subject beans and collection injection: list, array, set (PDF pp. 20-23) -->
+    <bean id="math" class="com.craft.Subject"><property name="subjectName" value="Maths 101"/></bean>
+    <bean id="javaSubject" class="com.craft.Subject"><property name="subjectName" value="Java EE"/></bean>
+    <bean id="student" class="com.craft.Student">
+        <property name="id" value="103"/><property name="name" value="John Doe"/><property name="age" value="20"/>
+        <property name="address" ref="address"/>
+        <property name="subjects"><list><ref bean="math"/><ref bean="javaSubject"/></list></property>
+        <property name="subjectsArray"><array><ref bean="math"/><ref bean="javaSubject"/></array></property>
+        <property name="subjectsSet"><set><ref bean="math"/><ref bean="javaSubject"/></set></property>
+    </bean>
+
+    <!-- Constructor injection: named, ordered, and indexed variants (PDF pp. 11-13) -->
+    <bean id="constructorNamedStudent" class="com.craft.Student">
+        <constructor-arg name="id" value="104"/><constructor-arg name="name" value="Abebe Kebede"/><constructor-arg name="age" value="22"/>
+    </bean>
+    <bean id="constructorOrderedStudent" class="com.craft.Student">
+        <constructor-arg value="105"/><constructor-arg value="Sara Bekele"/><constructor-arg value="23"/>
+    </bean>
+    <bean id="constructorIndexedStudent" class="com.craft.Student">
+        <constructor-arg index="0" value="106"/><constructor-arg index="1" value="Mimi Alemu"/><constructor-arg index="2" value="24"/>
+    </bean>
+    <bean id="constructorObjectStudent" class="com.craft.Student">
+        <constructor-arg name="id" value="107"/><constructor-arg name="name" value="Dawit Tadesse"/><constructor-arg name="age" value="25"/><constructor-arg name="address" ref="address"/>
+    </bean>
+
+    <!-- Bean scopes (PDF pp. 24-27) -->
+    <bean id="singletonStudent" class="com.craft.Student" scope="singleton"/>
+    <bean id="prototypeStudent" class="com.craft.Student" scope="prototype"/>
+</beans>
